@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
+            this.serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
             this.myserviceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
-            // serviceProcessInstaller1
+            // serviceProcessInstaller
             // 
-            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
-            this.serviceProcessInstaller1.Password = null;
-            this.serviceProcessInstaller1.Username = null;
+            this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.serviceProcessInstaller.Password = null;
+            this.serviceProcessInstaller.Username = null;
             // 
             // myserviceInstaller
             // 
+            this.myserviceInstaller.Description = "Windows service which monitors file system activity in configured folder and logs" +
+    " it.";
             this.myserviceInstaller.ServiceName = "WSFileSystemWatcher";
             this.myserviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
+            this.serviceProcessInstaller,
             this.myserviceInstaller});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
+        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller;
         private System.ServiceProcess.ServiceInstaller myserviceInstaller;
     }
 }
